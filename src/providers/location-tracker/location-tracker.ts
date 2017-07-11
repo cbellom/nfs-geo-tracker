@@ -70,10 +70,13 @@ export class LocationTrackerProvider {
     private watchPosition(){
       let options = this.getForegroundTrackingConfig();
 
-      this.watch = this.geolocation.watchPosition(options).filter((p: any) => p.code === undefined).subscribe((position: Geoposition) => {
-        console.log(position);
-        this.updateAngularZone(position.coords.latitude, position.coords.longitude);
-
-      });
+      this.watch = this.geolocation.watchPosition().subscribe((position  :Geoposition)  => {
+        if (position.coords != undefined) {
+          console.log(position);
+          this.updateAngularZone(position.coords.latitude, position.coords.longitude);
+        } else {
+          console.log('Error watching position');
+        }
+    });
     }
 }
