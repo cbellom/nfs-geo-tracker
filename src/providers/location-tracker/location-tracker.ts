@@ -70,7 +70,7 @@ export class LocationTrackerProvider {
     private watchPosition(){
       let options = this.getForegroundTrackingConfig();
 
-      this.watch = this.geolocation.watchPosition().subscribe((position  :Geoposition)  => {
+      this.watch = this.geolocation.watchPosition(options).subscribe((position  :Geoposition)  => {
         if (position.coords != undefined) {
           console.log(position);
           this.updateAngularZone(position.coords.latitude, position.coords.longitude);
