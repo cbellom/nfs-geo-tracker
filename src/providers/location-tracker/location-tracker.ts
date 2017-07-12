@@ -10,10 +10,25 @@ export class LocationTrackerProvider {
     public lat: number = 0;
     public lng: number = 0;
 
+    static readonly DEFAULT_POSITION = {
+      latitude: 4.6211889,
+      longitude: -74.0832406
+    }
+
     constructor(public zone: NgZone,
                 private backgroundGeolocation :BackgroundGeolocation,
                 private geolocation :Geolocation) {
 
+    }
+    public getCurrentPosition() : Promise<any>{
+      return new Promise((resolve, reject) => {
+        this.geolocation.getCurrentPosition().then((position) => {
+          resolve(position)
+        }, (err) => {
+          console.log(err);
+          resolve(LocationTrackerProvider.DEFAULT_POSITION);
+        });
+      });
     }
 
     public startTracking() {
@@ -77,6 +92,6 @@ export class LocationTrackerProvider {
         } else {
           console.log('Error watching position');
         }
-    });
+      });
     }
 }

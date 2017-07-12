@@ -1,46 +1,24 @@
-import { Component, ViewChild, ElementRef  } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-declare var google;
-
+/**
+ * Generated class for the HomePage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
-  @ViewChild('map') mapElement: ElementRef;
-  map: any;
-
-  constructor(public navCtrl: NavController, public locationTracker: LocationTrackerProvider) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad(){
-    this.loadMap();
-  }
-
-  start(){
-    this.locationTracker.startTracking();
-  }
-
-  stop(){
-    this.locationTracker.stopTracking();
-  }
-
-  loadMap(){
-
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
-
-    let mapOptions = {
-      center: latLng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
   }
 
 }

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { MapPage } from '../pages/map/map';
 import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
 
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
@@ -14,7 +15,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { Geolocation } from '@ionic-native/geolocation';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    MapPage
   ],
   providers: [
     StatusBar,
